@@ -1,11 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {useState} from 'react'
+import {Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const[player1, setPlayer1]= useState<String>('');
+  const[player2, setPlayer2]= useState<String>('');
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+     <Text style={styles.title}>Welcome to Tic-Tac-Toe!</Text> 
+     
+     <TextInput 
+        placeholder="Player 1 Name"
+        value={player1}
+        onChangeText={setPlayer1}
+        style={styles.input}
+     />
+      <TextInput 
+        placeholder="Player 2 Name"
+        value={player2}
+        onChangeText={setPlayer2}
+        style={styles.input}
+        />
+        <Button
+          title="Start Game"
+          onPress={() => console.log(`Player 1: $ {player1}, Player 2: ${player2}`)}
+          />
     </View>
   );
 }
@@ -16,5 +35,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16, 
   },
+  title: {
+fontSize: 24,
+fontWeight: 'bold',
+marginVertical: 12,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 12, 
+    paddingVertical: 8,
+    marginVertical: 8,
+    width: '80%',
+
+  }
 });
